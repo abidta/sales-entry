@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Detail from "./components/Detail";
+import Detail from "./components/Details/Detail";
 
 function App() {
   return (
