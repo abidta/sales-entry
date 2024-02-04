@@ -19,15 +19,16 @@ function Detail() {
           <DetailRow key={obj.id} index={index + 1} />
         ))}
         <div className="flex justify-end items-center ">
-          {" "}
-          <InputL label="Total :" className="w-2/12" />
+          <InputL name="grand" label="Total :" className="w-2/12" />
         </div>
         <button
+          type="button"
           onClick={() => setRows([...rows, { id: Date.now() }])}
           className="bg-green-600"
         >
           add
         </button>
+        <button type="submit">Submit</button>
       </div>
     </>
   );
