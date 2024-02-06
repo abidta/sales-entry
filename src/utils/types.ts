@@ -1,10 +1,11 @@
-import { UseFormRegister } from "react-hook-form";
+import { UseFieldArrayRemove, UseFormRegister, UseFormReturn } from "react-hook-form";
 
 export type Input = {
   className?: string;
   defaultValue?: string | number;
   disabled?: boolean;
   name: ReturnUseRegister["name"];
+  remove?:boolean
 };
 type ReturnUseRegister = ReturnType<UseFormRegister<InputFields>>;
 
@@ -33,3 +34,7 @@ export type HeaderTable = {
   ac_amt: number;
   status: "A" | "L";
 };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ConnectMethods extends UseFormReturn<any> {
+  remove: UseFieldArrayRemove;
+}

@@ -1,13 +1,22 @@
 import { ReactNode } from "react";
-import { UseFormReturn, useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
+import { ConnectMethods } from "../utils/types";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 type ConnectFormProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: (methods: UseFormReturn<any>) => ReactNode;
+  children: (methods: ConnectMethods) => ReactNode;
 };
 function ConnectForm({ children }: ConnectFormProps): ReactNode {
   const methods = useFormContext();
-  return children({ ...methods });
+
+  const { remove } = useFieldArray({
+    name: "detail_table",
+    control: methods.control,
+  });
+  console.log("connectForm");
+
+  return children({ ...methods, remove });
 }
 
 export default ConnectForm;

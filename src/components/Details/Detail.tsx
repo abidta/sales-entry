@@ -3,13 +3,12 @@ import DetailRow from "./DetailRow";
 import InputL from "../InputL";
 
 function Detail() {
-  const [rows, setRows] = useState<{ id: number }[]>([{ id: Date.now() }]);
+  const [rows, setRows] = useState<{ id: number}[]>([{ id: Date.now()}]);
   useEffect(() => {
     console.log("mount");
 
     return () => {};
   }, [rows]);
-
   return (
     <>
       <div className="m-2 bg-orange-300 p-4">
@@ -22,16 +21,16 @@ function Detail() {
           <div className=" col-span-1">Amount </div>
           <div className=" col-span-1">Action </div>
         </div>
-        {rows.map((obj, index) => (
+        {rows.map((obj,index) => (
           <DetailRow
             key={obj.id}
             id={obj.id}
             index={index}
-            removeRow={(id) =>setRows( rows.filter((val) => id != val.id))}
+            removeRow={(id) =>setRows( rows.filter((val) => id !== val.id))}
           />
         ))}
         <div className="flex justify-end items-center ">
-          <InputL name="grand" label="Total :" className="w-2/12" />
+          <InputL  name="grand" label="Total :" className="w-2/12" />
         </div>
         <button
           type="button"
