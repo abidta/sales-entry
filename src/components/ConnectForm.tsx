@@ -14,7 +14,6 @@ function ConnectForm({ children }: ConnectFormProps): ReactNode {
     name: "detail_table",
     control: methods.control,
   });
-  console.log("connectForm");
 
   return children({ ...methods, remove });
 }

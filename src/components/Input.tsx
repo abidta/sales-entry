@@ -1,23 +1,23 @@
 import { ConnectMethods, Input } from "../utils/types";
-import ConnectForm from "./ConectForm";
-
+import ConnectForm from "./ConnectForm";
 
 function Input({ className, disabled, defaultValue, name, remove }: Input) {
   return (
     <>
       <ConnectForm>
-        {({ register }: ConnectMethods) => {
+        {({ register, formState: { errors } }: ConnectMethods) => {
           return (
             <>
               {!remove && (
                 <input
-                  {...register(name)}
+                  {...register(name, { required: "this field not be empty" })}
                   disabled={disabled}
                   value={defaultValue}
                   className={`${className} grow p-1 border border-black`}
                   type="text"
                 />
               )}
+              {errors && <></>}
             </>
           );
         }}
