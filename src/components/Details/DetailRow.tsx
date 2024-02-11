@@ -43,26 +43,43 @@ function DetailRow({ index, removeRow, id }: Row) {
         <Input
           name={`${prefix}.${index}.sr_no`}
           remove={unregister}
-          defaultValue={index + 1}
+          value={index + 1}
+          pattern={/^\d{1,18}$/}
         />
       </div>
       <div className="flex col-span-2">
-        <Input name={`${prefix}.${index}.item_code`} remove={unregister} />
+        <Input
+          name={`${prefix}.${index}.item_code`}
+          remove={unregister}
+          pattern={/^.{1,200}$/}
+        />
       </div>
       <div className="flex col-span-5">
-        <Input name={`${prefix}.${index}.item_name`} remove={unregister} />
+        <Input
+          name={`${prefix}.${index}.item_name`}
+          remove={unregister}
+          pattern={/^.{1,200}$/}
+        />
       </div>
       <div className="flex col-span-1">
-        <Input name={`${prefix}.${index}.qty`} remove={unregister} />
+        <Input
+          name={`${prefix}.${index}.qty`}
+          remove={unregister}
+          pattern={/^\d{1,18}(?:\.\d{1,3})?$/}
+        />
       </div>
       <div className="flex col-span-1">
-        <Input name={`${prefix}.${index}.rate`} remove={unregister} />
+        <Input
+          name={`${prefix}.${index}.rate`}
+          remove={unregister}
+          pattern={/^\d{1,18}(?:\.\d{1,2})?$/}
+        />
       </div>
       <div className="flex col-span-1">
         <Input
           name={`${prefix}.${index}.amount`}
           remove={unregister}
-          defaultValue={isNaN(amount) ? 0 : amount}
+          value={amount}
         />
       </div>
       <div className="flex col-span-1 items-center justify-center bg-white border ">

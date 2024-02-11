@@ -25,7 +25,10 @@ const amountSlice = createSlice({
     calcAmt: (state, action) => {
       state.amount = state.amount.map((item) => {
         if (item.id === action.payload?.id) {
-          item.amount = action.payload?.qty * action.payload?.amt;
+          const calcAmt =
+            parseFloat(action.payload?.qty) * parseFloat(action.payload?.amt) ||
+            0;
+          item.amount = parseFloat(calcAmt.toFixed(3));
           return item;
         }
         return item;

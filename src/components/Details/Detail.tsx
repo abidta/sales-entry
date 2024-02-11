@@ -32,7 +32,7 @@ function Detail() {
             name="grand"
             label="Total :"
             className="w-2/12"
-            defaultValue={grandTotal}
+            value={grandTotal}
           />
         </div>
         <button

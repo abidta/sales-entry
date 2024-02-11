@@ -2,10 +2,11 @@ import { UseFieldArrayRemove, UseFormRegister, UseFormReturn } from "react-hook-
 
 export type Input = {
   className?: string;
-  defaultValue?: string | number;
+  value?: string | number;
   disabled?: boolean;
   name: ReturnUseRegister["name"];
   remove?:boolean
+  pattern?:RegExp
 };
 type ReturnUseRegister = ReturnType<UseFormRegister<InputFields>>;
 

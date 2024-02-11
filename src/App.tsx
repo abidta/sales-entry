@@ -8,7 +8,6 @@ const handleSubmit: SubmitHandler<InputFields> = (data) => {
 };
 function App() {
   const methods = useForm<InputFields>();
-
   return (
     <>
       <FormProvider {...methods}>
