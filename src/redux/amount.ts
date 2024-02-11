@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const calcTotal = (arr: AmountType[]) =>
-  arr.reduce((tot, item) => tot + (isNaN(item.amount) ? 0 : item.amount), 0);
+  arr.reduce(
+    (tot, item) =>
+      tot + parseFloat((isNaN(item.amount) ? 0 : item.amount).toFixed(2)),
+    0
+  );
 type AmountType = {
   id: string | null;
   amount: number;

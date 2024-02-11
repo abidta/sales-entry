@@ -39,12 +39,13 @@ function DetailRow({ index, removeRow, id }: Row) {
 
   return (
     <div className="grid grid-cols-12 ">
-      <div className=" flex col-span-1">
+      <div className=" flex col-span-1 relative">
         <Input
           name={`${prefix}.${index}.sr_no`}
           remove={unregister}
           value={index + 1}
           pattern={/^\d{1,18}$/}
+          message="must be number"
         />
       </div>
       <div className="flex col-span-2">
@@ -61,28 +62,30 @@ function DetailRow({ index, removeRow, id }: Row) {
           pattern={/^.{1,200}$/}
         />
       </div>
-      <div className="flex col-span-1">
+      <div className="flex col-span-1 relative">
         <Input
           name={`${prefix}.${index}.qty`}
           remove={unregister}
           pattern={/^\d{1,18}(?:\.\d{1,3})?$/}
+          message="Please enter a number with maximum 3 digits after the decimal point"
         />
       </div>
-      <div className="flex col-span-1">
+      <div className="flex col-span-1 relative">
         <Input
           name={`${prefix}.${index}.rate`}
           remove={unregister}
           pattern={/^\d{1,18}(?:\.\d{1,2})?$/}
+          message="Please enter a number with maximum 2 digits after the decimal point"
         />
       </div>
-      <div className="flex col-span-1">
+      <div className="flex col-span-1 relative">
         <Input
           name={`${prefix}.${index}.amount`}
           remove={unregister}
           value={amount}
         />
       </div>
-      <div className="flex col-span-1 items-center justify-center bg-white border ">
+      <div className="flex col-span-1 relative items-center justify-center bg-white border ">
         <ConnectForm>
           {({ remove }: ConnectMethods) => {
             return (

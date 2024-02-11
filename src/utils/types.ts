@@ -6,9 +6,10 @@ export type Input = {
   disabled?: boolean;
   name: ReturnUseRegister["name"];
   remove?:boolean
+  message?:string
   pattern?:RegExp
 };
-type ReturnUseRegister = ReturnType<UseFormRegister<InputFields>>;
+export type ReturnUseRegister = ReturnType<UseFormRegister<InputFields>>;
 
 export type InputL = {
   label?: string;

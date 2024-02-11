@@ -21,6 +21,7 @@ function Header() {
           name={`${prefixName}.vr_no`}
           label="Vr NO:"
           pattern={/^\d{1,18}$/}
+          message="must be number"
         />
         <InputL
           name={`${prefixName}.vr_date`}
@@ -42,6 +43,7 @@ function Header() {
             label="Ac Amt:"
             value={grandTotal}
             pattern={/^\d{1,18}(?:\.\d{2})?$/}
+            message="must be number"
           />
         </div>
       </div>
