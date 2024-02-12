@@ -14,7 +14,7 @@ function Input({
 }: Input) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function getValueByPath(obj: FieldErrors<InputFields>, path: any[]) {
-    return path.reduce((acc, key) => {
+    return path?.reduce((acc, key) => {
       return acc?.[key];
     }, obj);
   }
@@ -25,7 +25,6 @@ function Input({
         {({ register, formState: { errors } }: ConnectMethods) => {
           return (
             <>
-              {console.log(message, name, "message rtt")}
               {!remove && (
                 <input
                   {...register(name, {
@@ -42,9 +41,9 @@ function Input({
                   type="text"
                 />
               )}
-              {getValueByPath(errors, name.split("."))?.message && (
+              {getValueByPath(errors, name?.split("."))?.message && (
                 <Error
-                  message={getValueByPath(errors, name.split("."))?.message}
+                  message={getValueByPath(errors, name?.split("."))?.message}
                 />
               )}
             </>

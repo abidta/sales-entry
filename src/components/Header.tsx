@@ -3,12 +3,13 @@ import InputL from "./InputL";
 import { useAppSelector } from "../hooks/redux";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
+import Select from "./Select";
 
 function Header() {
   const methods = useFormContext();
   const { grandTotal } = useAppSelector((state) => state.amount);
   const prefixName: keyof InputFields = "header_table";
-  console.log(grandTotal);
+  console.log(grandTotal, "header");
   useEffect(() => {
     methods.setValue(`${prefixName}.ac_amt`, grandTotal);
     return () => {};
@@ -20,15 +21,15 @@ function Header() {
         <InputL
           name={`${prefixName}.vr_no`}
           label="Vr NO:"
-          pattern={/^\d{1,18}$/}
-          message="must be number"
+          pattern={/^\d{18}$/}
+          message="must be 18 digits"
         />
         <InputL
           name={`${prefixName}.vr_date`}
           label="Vr Date:"
           value={new Date().toISOString().split("T")[0]}
         />
-        <InputL name={`${prefixName}.status`} label="Status" />
+        <Select name={`${prefixName}.status`} />
         <div className="grid grid-cols-subgrid col-span-3 mt-5 ">
           <div className="grid col-span-2">
             <InputL
@@ -42,7 +43,7 @@ function Header() {
             name={`${prefixName}.ac_amt`}
             label="Ac Amt:"
             value={grandTotal}
-            pattern={/^\d{1,18}(?:\.\d{2})?$/}
+            pattern={/^\d{1,18}\.\d{2}?$/}
             message="must be number"
           />
         </div>

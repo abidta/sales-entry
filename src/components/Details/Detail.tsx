@@ -13,7 +13,8 @@ function Detail() {
         <div className="grid grid-cols-12  bg-gray-300 ">
           <div className=" col-span-1">Sr No.</div>
           <div className=" col-span-2">Item Code</div>
-          <div className=" col-span-5">Item Name</div>
+          <div className=" col-span-2">Item Name</div>
+          <div className="col-span-3">Description</div>
           <div className=" col-span-1">Qty</div>
           <div className=" col-span-1">Rate</div>
           <div className=" col-span-1">Amount </div>

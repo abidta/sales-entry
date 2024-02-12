@@ -20,6 +20,10 @@ function DetailRow({ index, removeRow, id }: Row) {
     control: methods.control,
     name: [`${prefix}.${index}.qty`, `${prefix}.${index}.rate`],
   });
+  const vr_no = useWatch({
+    name: "header_table.vr_no",
+    control: methods.control,
+  });
   const amount = useAppSelector(
     (state) => state.amount?.amount[index + 1]?.amount
   );
@@ -32,10 +36,13 @@ function DetailRow({ index, removeRow, id }: Row) {
       })
     );
     methods.setValue(`${prefix}.${index}.amount`, amount);
-
     return () => {};
   }, [calc, amount]);
-  console.log(amount, "klkl");
+
+  useEffect(() => {
+    methods.setValue(`${prefix}.${index}.vr_no`, vr_no);
+    return () => {};
+  }, [vr_no]);
 
   return (
     <div className="grid grid-cols-12 ">
@@ -55,18 +62,25 @@ function DetailRow({ index, removeRow, id }: Row) {
           pattern={/^.{1,200}$/}
         />
       </div>
-      <div className="flex col-span-5">
+      <div className="flex col-span-2">
         <Input
           name={`${prefix}.${index}.item_name`}
           remove={unregister}
           pattern={/^.{1,200}$/}
         />
       </div>
+      <div className="flex col-span-3">
+        <Input
+          name={`${prefix}.${index}.description`}
+          remove={unregister}
+          pattern={/^.{1,3000}$/}
+        />
+      </div>
       <div className="flex col-span-1 relative">
         <Input
           name={`${prefix}.${index}.qty`}
           remove={unregister}
-          pattern={/^\d{1,18}(?:\.\d{1,3})?$/}
+          pattern={/^\d{1,18}\.\d{3}$/}
           message="Please enter a number with maximum 3 digits after the decimal point"
         />
       </div>
@@ -74,7 +88,7 @@ function DetailRow({ index, removeRow, id }: Row) {
         <Input
           name={`${prefix}.${index}.rate`}
           remove={unregister}
-          pattern={/^\d{1,18}(?:\.\d{1,2})?$/}
+          pattern={/^\d{1,18}\.\d{2}$/}
           message="Please enter a number with maximum 2 digits after the decimal point"
         />
       </div>
