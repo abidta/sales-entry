@@ -35,7 +35,7 @@ function DetailRow({ index, removeRow, id }: Row) {
         amt: calc[1],
       })
     );
-    methods.setValue(`${prefix}.${index}.amount`, amount);
+    // methods.setValue(`${prefix}.${index}.amount`, amount);
     return () => {};
   }, [calc, amount]);
 
@@ -94,7 +94,7 @@ function DetailRow({ index, removeRow, id }: Row) {
       </div>
       <div className="flex col-span-1 relative">
         <Input
-          name={`${prefix}.${index}.amount`}
+          
           remove={unregister}
           value={amount}
         />

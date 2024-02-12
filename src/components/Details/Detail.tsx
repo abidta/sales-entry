@@ -29,12 +29,7 @@ function Detail() {
           />
         ))}
         <div className="flex justify-end items-center ">
-          <InputL
-            name="grand"
-            label="Total :"
-            className="w-2/12"
-            value={grandTotal}
-          />
+          <InputL label="Total :" className="w-2/12" value={grandTotal} />
         </div>
         <button
           type="button"

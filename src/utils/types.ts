@@ -8,7 +8,7 @@ export type Input = {
   className?: string;
   value?: string | number;
   disabled?: boolean;
-  name: ReturnUseRegister["name"];
+  name?: ReturnUseRegister["name"];
   remove?: boolean;
   message?: string;
   pattern?: RegExp;

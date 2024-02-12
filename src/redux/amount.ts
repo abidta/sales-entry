@@ -12,7 +12,7 @@ type AmountType = {
 };
 const INITIAL_STATE: {
   amount: AmountType[];
-  grandTotal: number;
+  grandTotal: number|string;
 } = {
   amount: [
     {
@@ -32,7 +32,7 @@ const amountSlice = createSlice({
           const calcAmt =
             parseFloat(action.payload?.qty) * parseFloat(action.payload?.amt) ||
             0;
-          item.amount = parseFloat(calcAmt.toFixed(3));
+          item.amount = parseFloat(calcAmt.toFixed(2));
           return item;
         }
         return item;
@@ -40,7 +40,7 @@ const amountSlice = createSlice({
       if (!state.amount.find((item) => item.id === action.payload?.id)) {
         state.amount.push({
           id: action.payload?.id,
-          amount: action.payload?.qty * action.payload?.amt,
+          amount: parseFloat(action.payload?.qty) *parseFloat( action.payload?.amt),
         });
       }
       state.grandTotal = calcTotal(state.amount);
@@ -50,7 +50,7 @@ const amountSlice = createSlice({
       state.amount = state.amount.filter(
         (item) => item.id != action.payload.id
       );
-      state.grandTotal = calcTotal(state.amount);
+      state.grandTotal = calcTotal(state.amount).toFixed(2);
     },
   },
 });

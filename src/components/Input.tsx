@@ -13,7 +13,7 @@ function Input({
   message,
 }: Input) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function getValueByPath(obj: FieldErrors<InputFields>, path: any[]) {
+  function getValueByPath(obj: FieldErrors<InputFields>, path: any[] = []) {
     return path?.reduce((acc, key) => {
       return acc?.[key];
     }, obj);
@@ -26,20 +26,30 @@ function Input({
           return (
             <>
               {!remove && (
-                <input
-                  {...register(name, {
-                    required: "this field not be empty",
-                    pattern: {
-                      value: pattern as RegExp,
-                      message: message as string,
-                    },
-                  })}
-                  required
-                  value={value}
-                  disabled={disabled}
-                  className={`${className} grow p-1 border border-black`}
-                  type="text"
-                />
+                <>
+                  {name ? (
+                    <input
+                      {...register(name, {
+                        required: "this field not be empty",
+                        pattern: {
+                          value: pattern as RegExp,
+                          message: message as string,
+                        },
+                      })}
+                      required
+                      value={value}
+                      disabled={disabled}
+                      className={`${className} grow p-1 border border-black`}
+                      type="text"
+                    />
+                  ) : (
+                    <input
+                      value={value}
+                      className={`${className} grow p-1 border border-black`}
+                      type="text"
+                    />
+                  )}
+                </>
               )}
               {getValueByPath(errors, name?.split("."))?.message && (
                 <Error
