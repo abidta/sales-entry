@@ -1,4 +1,3 @@
-import React from 'react'
 import ConnectForm from './ConnectForm'
 
 function Select({name}:{name:string}) {
