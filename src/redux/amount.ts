@@ -44,7 +44,7 @@ const amountSlice = createSlice({
             parseFloat(action.payload?.qty) * parseFloat(action.payload?.amt),
         });
       }
-      state.grandTotal = calcTotal(state.amount);
+      state.grandTotal = parseFloat(calcTotal(state.amount).toFixed(2));
     },
 
     removeItem: (state, action) => {
@@ -53,8 +53,11 @@ const amountSlice = createSlice({
       );
       state.grandTotal = calcTotal(state.amount).toFixed(2);
     },
+    resetField: (state) => {
+      Object.assign(state, INITIAL_STATE);
+    },
   },
 });
 
 export default amountSlice.reducer;
-export const { calcAmt, removeItem } = amountSlice.actions;
+export const { calcAmt, removeItem,resetField } = amountSlice.actions;

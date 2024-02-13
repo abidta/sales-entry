@@ -1,12 +1,14 @@
 import { useState } from "react";
 import DetailRow from "./DetailRow";
 import InputL from "../InputL";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import Button from "../Button";
 import { useFormContext } from "react-hook-form";
+import { resetField } from "../../redux/amount";
 
 function Detail() {
   const [rows, setRows] = useState<{ id: number }[]>([{ id: Date.now() }]);
+  const dispatch = useAppDispatch();
   const { grandTotal } = useAppSelector((state) => state.amount);
   const methods = useFormContext();
   console.log(grandTotal, "amount arra");
@@ -41,7 +43,15 @@ function Detail() {
         >
           Add rows
         </Button>
-        <Button className="me-2" type="button" onClick={() => methods.reset()}>
+        <Button
+          className="me-2"
+          type="button"
+          onClick={() => {
+            methods.reset();
+            dispatch(resetField());
+            setRows([{id:Date.now()}])
+          }}
+        >
           Reset
         </Button>
         <Button className="me-2" type="submit">
