@@ -2,14 +2,17 @@ import { useState } from "react";
 import DetailRow from "./DetailRow";
 import InputL from "../InputL";
 import { useAppSelector } from "../../hooks/redux";
+import Button from "../Button";
+import { useFormContext } from "react-hook-form";
 
 function Detail() {
   const [rows, setRows] = useState<{ id: number }[]>([{ id: Date.now() }]);
   const { grandTotal } = useAppSelector((state) => state.amount);
+  const methods = useFormContext();
   console.log(grandTotal, "amount arra");
   return (
     <>
-      <div className="m-2 bg-orange-300 p-4">
+      <div className="m-2 bg-blue-200 p-4">
         <div className="grid grid-cols-12  bg-gray-300 ">
           <div className=" col-span-1">Sr No.</div>
           <div className=" col-span-2">Item Code</div>
@@ -31,14 +34,19 @@ function Detail() {
         <div className="flex justify-end items-center ">
           <InputL label="Total :" className="w-2/12" value={grandTotal} />
         </div>
-        <button
+        <Button
           type="button"
+          className="me-2"
           onClick={() => setRows([...rows, { id: Date.now() }])}
-          className="bg-green-600"
         >
-          add
-        </button>
-        <button type="submit">Submit</button>
+          Add rows
+        </Button>
+        <Button className="me-2" type="button" onClick={() => methods.reset()}>
+          Reset
+        </Button>
+        <Button className="me-2" type="submit">
+          Submit
+        </Button>
       </div>
     </>
   );

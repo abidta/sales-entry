@@ -93,11 +93,7 @@ function DetailRow({ index, removeRow, id }: Row) {
         />
       </div>
       <div className="flex col-span-1 relative">
-        <Input
-          
-          remove={unregister}
-          value={amount}
-        />
+        <Input remove={unregister} value={amount} />
       </div>
       <div className="flex col-span-1 relative items-center justify-center bg-white border ">
         <ConnectForm>
@@ -106,6 +102,7 @@ function DetailRow({ index, removeRow, id }: Row) {
               <>
                 <Button
                   type="button"
+                  className="grow"
                   onClick={() => {
                     dispatch(removeItem({ id }));
                     removeRow(id);

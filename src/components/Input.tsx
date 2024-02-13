@@ -44,7 +44,8 @@ function Input({
                     />
                   ) : (
                     <input
-                      value={value}
+                      value={value || ""}
+                      readOnly
                       className={`${className} grow p-1 border border-black`}
                       type="text"
                     />

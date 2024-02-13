@@ -33,7 +33,7 @@ type DetailTable = {
   rate: number;
   amount: number;
 };
-export type HeaderTable = {
+export type HeaderTable<> = {
   vr_no: number;
   vr_date: string;
   ac_name: string;
