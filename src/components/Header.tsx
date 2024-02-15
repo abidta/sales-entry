@@ -44,7 +44,7 @@ function Header() {
             name={`${prefixName}.ac_amt`}
             label="Ac Amt:"
             value={grandTotal}
-            pattern={/^\d{1,18}\.\d{2}?$/}
+            pattern={/^\d{1,18}\.\d{1,2}?$/}
             message="must be number"
           />
         </div>
