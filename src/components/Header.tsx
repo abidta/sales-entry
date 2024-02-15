@@ -27,8 +27,8 @@ function Header() {
         <InputL
           name={`${prefixName}.vr_date`}
           label="Vr Date:"
-          // value={new Date().toISOString().split("T")[0]}
-          value={"2024-02-07"}
+          value={new Date().toISOString().split("T")[0]}
+          // value={"2024-02-07"}
         />
         <Select name={`${prefixName}.status`} />
         <div className="grid grid-cols-subgrid col-span-3 mt-5 ">

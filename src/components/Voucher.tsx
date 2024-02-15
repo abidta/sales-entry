@@ -68,7 +68,7 @@ function Voucher({ data }: { data: InputFields | null }) {
               <Text>Total</Text>
             </View>
             {data?.detail_table.map((obj, index) => (
-              <View style={styles.item}>
+              <View key={index} style={styles.item}>
                 <Text>{obj.sr_no}</Text>
                 <Text>{obj.item_name}</Text>
                 <Text>{obj.qty}</Text>
